@@ -1,17 +1,20 @@
 <template>
- <div class="main">
-  <div class="cards">
-    <div class="card" v-for=" ( item , index ) in characters" :key= "index.author">
-      <div class="character"  >
-        <img :src=item.poster alt="">
+ <div>
+  <div v-if="loaded" class="main">
+    <div class="cards">
+      <div class="card" v-for=" ( item , index ) in characters" :key= "index.author">
+        <div class="character"  >
+          <img :src=item.poster alt="">
+        </div>
+        <div class="description">
+          <h3>{{item.title}}</h3>
+          <h5>{{item.author}}</h5>
+          <h6>{{item.year}}</h6>
+        </div>
       </div>
-      <div class="description">
-        <h3>{{item.title}}</h3>
-        <h5>{{item.author}}</h5>
-        <h6>{{item.year}}</h6>
-      </div>
-    </div>
-  </div>    
+    </div>  
+  </div>   
+  <div v-else class="loader"> <h1>caricamento....</h1> </div> 
  </div> 
   
 </template>
@@ -94,6 +97,13 @@ export default {
     };
   };
  };
+};
+
+.loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 };
 
   
